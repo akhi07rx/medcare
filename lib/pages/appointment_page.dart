@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: AppointmentPage(),
-  ));
-}
-
 class AppointmentPage extends StatelessWidget {
   const AppointmentPage({Key? key}) : super(key: key);
 
@@ -43,14 +36,14 @@ class AppointmentPage extends StatelessWidget {
                 GFButton(
                   onPressed: () {},
                   text: "MY APPOINTMENTS",
-                  icon: Icon(Icons.note_alt_outlined),
+                  // icon: Icon(Icons.note_alt_outlined),
                   type: GFButtonType.outline,
                   // disabledColor: Colors.blue,
                 ),
                 GFButton(
                   onPressed: () {},
                   text: "BOOKED APPOINTMENTS",
-                  icon: Icon(Icons.note_alt_outlined),
+                  //  icon: Icon(Icons.note_alt_outlined),
                   type: GFButtonType.outline,
                 ),
               ],
