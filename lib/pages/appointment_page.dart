@@ -50,6 +50,7 @@ class AppointmentPage extends StatelessWidget {
             ),
           ),
           Card(
+            color: Color(0xFFE4E7EC),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -63,19 +64,19 @@ class AppointmentPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Your Title',
+                      'Connect with doctors & get suggestions',
                       style: GoogleFonts.openSans(
                           fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      'Your subtitle',
+                      'Connect now and get expert insights',
                       style: GoogleFonts.openSans(),
                     ),
                   ],
                 ),
               ],
             ),
-          ),
+          )
         ],
       ),
     );
