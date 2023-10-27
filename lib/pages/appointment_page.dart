@@ -51,30 +51,37 @@ class AppointmentPage extends StatelessWidget {
           ),
           Card(
             color: Color(0xFFE4E7EC),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Image.network(
-                  'https://i.imgur.com/HXuxNoI.png',
-                  width: 100,
-                  height: 100,
-                  fit: BoxFit.cover,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      'Connect with doctors & get suggestions',
-                      style: GoogleFonts.openSans(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Row(
+                children: <Widget>[
+                  Image.network(
+                    'https://i.imgur.com/HXuxNoI.png',
+                    width: 110,
+                    height: 110,
+                    fit: BoxFit.cover,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'Connect with doctors & get suggestions',
+                          style: GoogleFonts.openSans(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                        Text(
+                          'Connect now and get expert insights',
+                          style: GoogleFonts.openSans(),
+                        ),
+                      ],
                     ),
-                    Text(
-                      'Connect now and get expert insights',
-                      style: GoogleFonts.openSans(),
-                    ),
-                  ],
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
           )
         ],
