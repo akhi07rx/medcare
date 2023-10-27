@@ -14,7 +14,7 @@ class AppointmentPage extends StatelessWidget {
           style: GoogleFonts.poppins(
             color: Colors.black,
           ),
-        ), // Add this comma
+        ),
         centerTitle: true,
         leading: BackButton(color: Colors.black),
         actions: [
@@ -45,6 +45,33 @@ class AppointmentPage extends StatelessWidget {
                   text: "BOOKED APPOINTMENTS",
                   //  icon: Icon(Icons.note_alt_outlined),
                   type: GFButtonType.outline,
+                ),
+              ],
+            ),
+          ),
+          Card(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Image.network(
+                  'https://i.imgur.com/HXuxNoI.png',
+                  width: 100,
+                  height: 100,
+                  fit: BoxFit.cover,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Your Title',
+                      style: GoogleFonts.openSans(
+                          fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      'Your subtitle',
+                      style: GoogleFonts.openSans(),
+                    ),
+                  ],
                 ),
               ],
             ),
