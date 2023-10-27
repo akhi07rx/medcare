@@ -70,12 +70,12 @@ class AppointmentPage extends StatelessWidget {
                       children: <Widget>[
                         Text(
                           'Connect with doctors & get suggestions',
-                          style: GoogleFonts.openSans(
+                          style: GoogleFonts.poppins(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                         Text(
                           'Connect now and get expert insights',
-                          style: GoogleFonts.openSans(),
+                          style: GoogleFonts.poppins(),
                         ),
                       ],
                     ),
