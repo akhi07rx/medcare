@@ -1,6 +1,0 @@
-1. 404 page- Create a 404 not found page
-2. No Internet page - (No Internet page with animation and no internet toast)
-3. Widget Page - Card Page
-
-> Readme
-> Screenshots (SS Folder inside root)
