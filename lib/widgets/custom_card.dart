@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomCard extends StatelessWidget {
@@ -6,14 +7,19 @@ class CustomCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       color: Color(0xFFE4E7EC),
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: Colors.grey, width: 0.3),
+        borderRadius: BorderRadius.circular(10),
+      ),
+      elevation: 5,
       child: Padding(
         padding: EdgeInsets.all(8.0),
         child: Row(
           children: <Widget>[
             Image.network(
               'https://i.imgur.com/HXuxNoI.png',
-              width: 110,
-              height: 110,
+              width: 116,
+              height: 140,
               fit: BoxFit.cover,
             ),
             SizedBox(
@@ -25,12 +31,21 @@ class CustomCard extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     'Connect with doctors & get suggestions',
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.openSans(
                         fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     'Connect now and get expert insights',
-                    style: GoogleFonts.poppins(),
+                    style: GoogleFonts.openSans(),
+                  ),
+                  GFButton(
+                    onPressed: () {},
+                    text: "view details",
+                    type: GFButtonType.solid,
+                    size: GFSize.LARGE,
+                    fullWidthButton: true,
+                    textStyle: GoogleFonts.openSans(
+                        fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
