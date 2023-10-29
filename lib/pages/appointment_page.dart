@@ -15,7 +15,7 @@ final List<String> doctorItems = ['Doctor 1', 'Doctor 2', 'Doctor 3'];
 String? selectedFacility;
 String? selectedSpecialty;
 String? selectedDoctor;
-DateTime? selectedDate;
+String? selectedDate;
 
 final _formKey = GlobalKey<FormState>();
 
@@ -27,17 +27,13 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate ?? DateTime.now(),
-      firstDate: DateTime(2022, 8),
-      lastDate: DateTime(2023),
-    );
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
+  List<String> generateDateList() {
+    List<String> dateList = [];
+    for (int i = 0; i < 30; i++) {
+      DateTime date = DateTime.now().add(Duration(days: i));
+      dateList.add('${date.day}/${date.month}/${date.year}');
+    }
+    return dateList;
   }
 
   @override
@@ -108,14 +104,12 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       onChanged: (value) => selectedDoctor = value,
                     ),
                     const SizedBox(height: 30),
-                    ListTile(
-                      title: Text('Select Date (DD/MM/YYYY)'),
-                      trailing: Icon(Icons.calendar_today),
-                      onTap: () => _selectDate(context),
+                    CustomDropdownMenu(
+                      hint: 'Select Your Date',
+                      items: generateDateList(),
+                      onChanged: (value) => selectedDate = value,
                     ),
-                    const SizedBox(
-                        height:
-                            30), // Increase the space between the dropdown and the button
+                    const SizedBox(height: 30),
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
