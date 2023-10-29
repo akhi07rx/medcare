@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomCard extends StatelessWidget {
@@ -38,15 +37,28 @@ class CustomCard extends StatelessWidget {
                     'Connect now and get expert insights',
                     style: GoogleFonts.openSans(),
                   ),
-                  GFButton(
-                    onPressed: () {},
-                    text: "view details",
-                    type: GFButtonType.solid,
-                    size: GFSize.LARGE,
-                    fullWidthButton: true,
-                    textStyle: GoogleFonts.openSans(
-                        fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
+
+                  ElevatedButton(
+                    onPressed: () {
+                      // Put your code here
+                    },
+                    child: Text('view details'),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  )
+
+                  // GFButton(
+                  //   onPressed: () {},
+                  //   text: "view details",
+                  //   type: GFButtonType.solid,
+                  //   size: GFSize.LARGE,
+                  //   fullWidthButton: true,
+                  //   textStyle: GoogleFonts.openSans(
+                  //       fontSize: 18, fontWeight: FontWeight.bold),
+                  // ),
                 ],
               ),
             ),
