@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/custom_card.dart';
+import './Appointment Page/dropdown_menu.dart';
+
+const List<String> facilityList = <String>['Facility 1'];
+const List<String> specialtyList = <String>['Specialty 1'];
+const List<String> doctorList = <String>['Doctor 1'];
+const List<String> dateList = <String>['01/01/2023'];
 
 class AppointmentPage extends StatelessWidget {
   const AppointmentPage({Key? key}) : super(key: key);
@@ -17,10 +23,10 @@ class AppointmentPage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        leading: BackButton(color: Colors.black),
+        leading: const BackButton(color: Colors.black),
         actions: [
           IconButton(
-            icon: Icon(Icons.search, color: Colors.black),
+            icon: const Icon(Icons.search, color: Colors.black),
             onPressed: () {},
           ),
         ],
@@ -36,7 +42,7 @@ class AppointmentPage extends StatelessWidget {
               children: <Widget>[
                 GFButton(
                   onPressed: () {},
-                  text: "MY APPOINTMENTS",
+                  text: "CREATE APPOINTMENTS",
                   type: GFButtonType.outline,
                 ),
                 GFButton(
@@ -47,7 +53,15 @@ class AppointmentPage extends StatelessWidget {
               ],
             ),
           ),
-          CustomCard(), // use the custom card here
+          CustomCard(),
+          const DropdownMenu(list: facilityList),
+          const SizedBox(height: 20),
+          const DropdownMenu(list: specialtyList),
+          const SizedBox(height: 20),
+          const DropdownMenu(list: doctorList),
+          const SizedBox(height: 20),
+          const DropdownMenu(list: dateList),
+          const SizedBox(height: 20),
         ],
       ),
     );
