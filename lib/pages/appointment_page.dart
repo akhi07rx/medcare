@@ -50,7 +50,8 @@ class _AppointmentPageState extends State<AppointmentPage> {
         leading: const BackButton(color: Colors.black),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search, color: Colors.black),
+            icon: Image.asset('assets/logo/medcare.png',
+                width: 34.0, height: 34.0),
             onPressed: () {},
           ),
         ],
