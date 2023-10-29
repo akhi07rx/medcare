@@ -1,7 +1,9 @@
+// main.dart
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../widgets/custom_card.dart';
+import '../widgets/custom_dropdown_menu.dart';
 
 final List<String> facilityItems = ['Facility 1', 'Facility 2', 'Facility 3'];
 final List<String> specialtyItems = [
@@ -10,7 +12,7 @@ final List<String> specialtyItems = [
   'Specialty 3'
 ];
 final List<String> doctorItems = ['Doctor 1', 'Doctor 2', 'Doctor 3'];
-final List<String> dateItems = ['01/01/2023', '02/01/2023', '03/01/2023'];
+final List<String> dateItems = ['01/01/1523', '02/01/1523', '03/01/1523'];
 
 String? selectedFacility;
 String? selectedSpecialty;
@@ -64,35 +66,35 @@ class AppointmentPage extends StatelessWidget {
             ),
           ),
           CustomCard(),
-          const SizedBox(height: 20),
+          const SizedBox(height: 15),
           Form(
             key: _formKey,
             child: Column(
               children: [
-                DropdownMenu(
+                CustomDropdownMenu(
                   hint: 'Select Your Facility',
                   items: facilityItems,
                   onChanged: (value) => selectedFacility = value,
                 ),
-                const SizedBox(height: 20),
-                DropdownMenu(
+                const SizedBox(height: 15),
+                CustomDropdownMenu(
                   hint: 'Select Your Specialty',
                   items: specialtyItems,
                   onChanged: (value) => selectedSpecialty = value,
                 ),
-                const SizedBox(height: 20),
-                DropdownMenu(
+                const SizedBox(height: 15),
+                CustomDropdownMenu(
                   hint: 'Select Your Doctor',
                   items: doctorItems,
                   onChanged: (value) => selectedDoctor = value,
                 ),
-                const SizedBox(height: 20),
-                DropdownMenu(
+                const SizedBox(height: 15),
+                CustomDropdownMenu(
                   hint: 'Select Date (DD/MM/YYYY)',
                   items: dateItems,
                   onChanged: (value) => selectedDate = value,
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 15),
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -102,54 +104,13 @@ class AppointmentPage extends StatelessWidget {
                       print('Form is not valid');
                     }
                   },
-                  child: const Text('Submit Button'),
+                  child: const Text('CREATE APPOINTMENTS'),
                 ),
               ],
             ),
           ),
         ],
       ),
-    );
-  }
-}
-
-class DropdownMenu extends StatelessWidget {
-  final String hint;
-  final List<String> items;
-  final ValueChanged<String?> onChanged;
-
-  DropdownMenu(
-      {required this.hint, required this.items, required this.onChanged});
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButtonFormField<String>(
-      isExpanded: true,
-      decoration: InputDecoration(
-        contentPadding: const EdgeInsets.symmetric(vertical: 16),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
-      ),
-      hint: Text(
-        hint,
-        style: const TextStyle(fontSize: 14),
-      ),
-      items: items
-          .map((item) => DropdownMenuItem<String>(
-              value: item,
-              child: Text(
-                item,
-                style: const TextStyle(fontSize: 14),
-              )))
-          .toList(),
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return 'Please select an option.';
-        }
-        return null;
-      },
-      onChanged: onChanged,
     );
   }
 }
