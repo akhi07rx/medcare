@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:intl/intl.dart';
+
 import '../../widgets/custom_card.dart';
 import '../../widgets/custom_dropdown_menu.dart';
-
-// import '../widgets/custom_card.dart';
-// import '../widgets/custom_dropdown_menu.dart';
 
 final List<String> facilityItems = ['Facility 1', 'Facility 2', 'Facility 3'];
 final List<String> specialtyItems = [
@@ -19,7 +17,8 @@ final List<String> doctorItems = ['Doctor 1', 'Doctor 2', 'Doctor 3'];
 String? selectedFacility;
 String? selectedSpecialty;
 String? selectedDoctor;
-String? selectedDate;
+DateTime? selectedDate;
+TimeOfDay? selectedTime;
 
 final _formKey = GlobalKey<FormState>();
 
@@ -31,6 +30,30 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate ?? DateTime.now(),
+      firstDate: DateTime(2022, 8),
+      lastDate: DateTime(2023),
+    );
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+      });
+  }
+
+  Future<void> _selectTime(BuildContext context) async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: selectedTime ?? TimeOfDay.now(),
+    );
+    if (picked != null && picked != selectedTime)
+      setState(() {
+        selectedTime = picked;
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,43 +126,19 @@ class _AppointmentPageState extends State<AppointmentPage> {
                     ),
                     const SizedBox(height: 30),
                     ListTile(
-                      title: Text(selectedDate ?? 'Select Date (DD/MM/YYYY)'),
-                      trailing:
-                          Icon(Icons.calendar_today, color: Colors.grey[700]),
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: Text('Select a date'),
-                              content: Container(
-                                height: 300,
-                                child: SfDateRangePicker(
-                                  onSelectionChanged:
-                                      (DateRangePickerSelectionChangedArgs
-                                          args) {
-                                    setState(() {
-                                      DateTime date = args.value;
-                                      selectedDate =
-                                          '${date.day}/${date.month}/${date.year}';
-                                    });
-                                  },
-                                  selectionMode:
-                                      DateRangePickerSelectionMode.single,
-                                ),
-                              ),
-                              actions: <Widget>[
-                                TextButton(
-                                  child: Text('OK'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
+                      title: Text(selectedDate == null
+                          ? 'Select Date'
+                          : DateFormat('dd/MM/yyyy').format(selectedDate!)),
+                      trailing: Icon(Icons.calendar_today),
+                      onTap: () => _selectDate(context),
+                    ),
+                    const SizedBox(height: 30),
+                    ListTile(
+                      title: Text(selectedTime == null
+                          ? 'Select Time'
+                          : '${selectedTime!.hour}:${selectedTime!.minute}'),
+                      trailing: Icon(Icons.access_time),
+                      onTap: () => _selectTime(context),
                     ),
                     const SizedBox(height: 30),
                     ElevatedButton(
