@@ -37,6 +37,7 @@ dependencies:
   google_fonts: ^6.1.0
   getwidget: ^4.0.0
   dropdown_button2: ^2.3.9
+  syncfusion_flutter_datepicker: ^23.1.42
 
 dev_dependencies:
   flutter_test:

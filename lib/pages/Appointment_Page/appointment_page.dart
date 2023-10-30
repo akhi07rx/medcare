@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../widgets/custom_card.dart';
-import '../widgets/custom_dropdown_menu.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import '../../widgets/custom_card.dart';
+import '../../widgets/custom_dropdown_menu.dart';
+
+// import '../widgets/custom_card.dart';
+// import '../widgets/custom_dropdown_menu.dart';
 
 final List<String> facilityItems = ['Facility 1', 'Facility 2', 'Facility 3'];
 final List<String> specialtyItems = [
@@ -27,15 +31,6 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {
-  List<String> generateDateList() {
-    List<String> dateList = [];
-    for (int i = 0; i < 30; i++) {
-      DateTime date = DateTime.now().add(Duration(days: i));
-      dateList.add('${date.day}/${date.month}/${date.year}');
-    }
-    return dateList;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,8 +45,10 @@ class _AppointmentPageState extends State<AppointmentPage> {
         leading: const BackButton(color: Colors.black),
         actions: [
           IconButton(
-            icon: Image.asset('assets/logo/medcare.png',
-                width: 34.0, height: 34.0),
+            icon: Image.asset('assets/images/logo.png',
+                width: 36.0,
+                height:
+                    36.0), // replace 'assets/images/logo.png' with the path to your logo
             onPressed: () {},
           ),
         ],
@@ -105,10 +102,44 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       onChanged: (value) => selectedDoctor = value,
                     ),
                     const SizedBox(height: 30),
-                    CustomDropdownMenu(
-                      hint: 'Select Your Date',
-                      items: generateDateList(),
-                      onChanged: (value) => selectedDate = value,
+                    ListTile(
+                      title: Text(selectedDate ?? 'Select Date (DD/MM/YYYY)'),
+                      trailing:
+                          Icon(Icons.calendar_today, color: Colors.grey[700]),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Select a date'),
+                              content: Container(
+                                height: 300,
+                                child: SfDateRangePicker(
+                                  onSelectionChanged:
+                                      (DateRangePickerSelectionChangedArgs
+                                          args) {
+                                    setState(() {
+                                      DateTime date = args.value;
+                                      selectedDate =
+                                          '${date.day}/${date.month}/${date.year}';
+                                    });
+                                  },
+                                  selectionMode:
+                                      DateRangePickerSelectionMode.single,
+                                ),
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: Text('OK'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
                     ),
                     const SizedBox(height: 30),
                     ElevatedButton(

@@ -37,7 +37,6 @@ class CustomCard extends StatelessWidget {
                     'Connect now and get expert insights',
                     style: GoogleFonts.openSans(),
                   ),
-
                   ElevatedButton(
                     onPressed: () {
                       // Put your code here
@@ -49,16 +48,6 @@ class CustomCard extends StatelessWidget {
                       ),
                     ),
                   )
-
-                  // GFButton(
-                  //   onPressed: () {},
-                  //   text: "view details",
-                  //   type: GFButtonType.solid,
-                  //   size: GFSize.LARGE,
-                  //   fullWidthButton: true,
-                  //   textStyle: GoogleFonts.openSans(
-                  //       fontSize: 18, fontWeight: FontWeight.bold),
-                  // ),
                 ],
               ),
             ),
