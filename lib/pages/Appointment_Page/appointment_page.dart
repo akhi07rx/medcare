@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
-
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../../widgets/custom_card.dart';
 import '../../widgets/custom_dropdown_menu.dart';
 
@@ -17,8 +16,7 @@ final List<String> doctorItems = ['Doctor 1', 'Doctor 2', 'Doctor 3'];
 String? selectedFacility;
 String? selectedSpecialty;
 String? selectedDoctor;
-DateTime? selectedDate;
-TimeOfDay? selectedTime;
+String? selectedDate;
 
 final _formKey = GlobalKey<FormState>();
 
@@ -30,30 +28,6 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate ?? DateTime.now(),
-      firstDate: DateTime(2022, 8),
-      lastDate: DateTime(2023),
-    );
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
-  }
-
-  Future<void> _selectTime(BuildContext context) async {
-    final TimeOfDay? picked = await showTimePicker(
-      context: context,
-      initialTime: selectedTime ?? TimeOfDay.now(),
-    );
-    if (picked != null && picked != selectedTime)
-      setState(() {
-        selectedTime = picked;
-      });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,10 +42,8 @@ class _AppointmentPageState extends State<AppointmentPage> {
         leading: const BackButton(color: Colors.black),
         actions: [
           IconButton(
-            icon: Image.asset('assets/images/logo.png',
-                width: 36.0,
-                height:
-                    36.0), // replace 'assets/images/logo.png' with the path to your logo
+            icon: Image.asset('assets/logo/medcare.png',
+                width: 36.0, height: 36.0),
             onPressed: () {},
           ),
         ],
@@ -126,19 +98,43 @@ class _AppointmentPageState extends State<AppointmentPage> {
                     ),
                     const SizedBox(height: 30),
                     ListTile(
-                      title: Text(selectedDate == null
-                          ? 'Select Date'
-                          : DateFormat('dd/MM/yyyy').format(selectedDate!)),
-                      trailing: Icon(Icons.calendar_today),
-                      onTap: () => _selectDate(context),
-                    ),
-                    const SizedBox(height: 30),
-                    ListTile(
-                      title: Text(selectedTime == null
-                          ? 'Select Time'
-                          : '${selectedTime!.hour}:${selectedTime!.minute}'),
-                      trailing: Icon(Icons.access_time),
-                      onTap: () => _selectTime(context),
+                      title: Text(selectedDate ?? 'Select Date (DD/MM/YYYY)'),
+                      trailing:
+                          Icon(Icons.calendar_today, color: Colors.grey[700]),
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Select a date'),
+                              content: Container(
+                                height: 300,
+                                child: SfDateRangePicker(
+                                  onSelectionChanged:
+                                      (DateRangePickerSelectionChangedArgs
+                                          args) {
+                                    setState(() {
+                                      DateTime date = args.value;
+                                      selectedDate =
+                                          '${date.day}/${date.month}/${date.year}';
+                                    });
+                                  },
+                                  selectionMode:
+                                      DateRangePickerSelectionMode.single,
+                                ),
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  child: Text('OK'),
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
                     ),
                     const SizedBox(height: 30),
                     ElevatedButton(
