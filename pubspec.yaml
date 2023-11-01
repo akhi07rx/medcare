@@ -38,6 +38,7 @@ dependencies:
   getwidget: ^4.0.0
   dropdown_button2: ^2.3.9
   syncfusion_flutter_datepicker: ^23.1.42
+  adoptive_calendar: ^0.0.4
 
 dev_dependencies:
   flutter_test:

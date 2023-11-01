@@ -1,7 +1,7 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import '../../widgets/custom_card.dart';
 import '../../widgets/custom_dropdown_menu.dart';
 
@@ -16,7 +16,7 @@ final List<String> doctorItems = ['Doctor 1', 'Doctor 2', 'Doctor 3'];
 String? selectedFacility;
 String? selectedSpecialty;
 String? selectedDoctor;
-String? selectedDate;
+DateTime selectedDate = DateTime.now();
 
 final _formKey = GlobalKey<FormState>();
 
@@ -28,6 +28,19 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101));
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -98,43 +111,10 @@ class _AppointmentPageState extends State<AppointmentPage> {
                     ),
                     const SizedBox(height: 30),
                     ListTile(
-                      title: Text(selectedDate ?? 'Select Date (DD/MM/YYYY)'),
+                      title: Text("${selectedDate.toLocal()}".split(' ')[0]),
                       trailing:
                           Icon(Icons.calendar_today, color: Colors.grey[700]),
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: Text('Select a date'),
-                              content: Container(
-                                height: 300,
-                                child: SfDateRangePicker(
-                                  onSelectionChanged:
-                                      (DateRangePickerSelectionChangedArgs
-                                          args) {
-                                    setState(() {
-                                      DateTime date = args.value;
-                                      selectedDate =
-                                          '${date.day}/${date.month}/${date.year}';
-                                    });
-                                  },
-                                  selectionMode:
-                                      DateRangePickerSelectionMode.single,
-                                ),
-                              ),
-                              actions: <Widget>[
-                                TextButton(
-                                  child: Text('OK'),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
+                      onTap: () => _selectDate(context),
                     ),
                     const SizedBox(height: 30),
                     ElevatedButton(
