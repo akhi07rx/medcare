@@ -2,16 +2,25 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:adoptive_calendar/adoptive_calendar.dart';
 import '../../widgets/custom_card.dart';
 import '../../widgets/custom_dropdown_menu.dart';
 
-final List<String> facilityItems = ['Facility 1', 'Facility 2', 'Facility 3'];
+final List<String> facilityItems = [
+  'Facility 1',
+  'Facility 2',
+  'Facility 3',
+];
 final List<String> specialtyItems = [
   'Specialty 1',
   'Specialty 2',
   'Specialty 3'
 ];
-final List<String> doctorItems = ['Doctor 1', 'Doctor 2', 'Doctor 3'];
+final List<String> doctorItems = [
+  'Doctor 1',
+  'Doctor 2',
+  'Doctor 3',
+];
 
 String? selectedFacility;
 String? selectedSpecialty;
@@ -19,6 +28,35 @@ String? selectedDoctor;
 DateTime selectedDate = DateTime.now();
 
 final _formKey = GlobalKey<FormState>();
+
+class DatePickerWidget extends StatelessWidget {
+  final Function(DateTime) onDateSelected;
+
+  DatePickerWidget({required this.onDateSelected});
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AdoptiveCalendar(
+          initialDate: DateTime.now(),
+        );
+      },
+    );
+    if (picked != null) {
+      onDateSelected(picked);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text("${selectedDate.toLocal()}".split(' ')[0]),
+      trailing: Icon(Icons.calendar_today, color: Colors.grey[700]),
+      onTap: () => _selectDate(context),
+    );
+  }
+}
 
 class AppointmentPage extends StatefulWidget {
   const AppointmentPage({Key? key}) : super(key: key);
@@ -28,17 +66,10 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDatePicker(
-        context: context,
-        initialDate: selectedDate,
-        firstDate: DateTime(2015, 8),
-        lastDate: DateTime(2101));
-    if (picked != null && picked != selectedDate) {
-      setState(() {
-        selectedDate = picked;
-      });
-    }
+  void onDateSelected(DateTime date) {
+    setState(() {
+      selectedDate = date;
+    });
   }
 
   @override
@@ -110,12 +141,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       onChanged: (value) => selectedDoctor = value,
                     ),
                     const SizedBox(height: 30),
-                    ListTile(
-                      title: Text("${selectedDate.toLocal()}".split(' ')[0]),
-                      trailing:
-                          Icon(Icons.calendar_today, color: Colors.grey[700]),
-                      onTap: () => _selectDate(context),
-                    ),
+                    DatePickerWidget(onDateSelected: onDateSelected),
                     const SizedBox(height: 30),
                     ElevatedButton(
                       onPressed: () {
