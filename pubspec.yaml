@@ -39,6 +39,7 @@ dependencies:
   dropdown_button2: ^2.3.9
   adoptive_calendar: ^0.0.4
   cached_network_image: ^3.3.0
+  iconsax_flutter: ^1.0.0
 
 dev_dependencies:
   flutter_test:
