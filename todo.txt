@@ -2,6 +2,7 @@
 2. No Internet page - (No Internet page with animation and no internet toast)
 3. Widget Page - Card Page
 4. Exit Dialogue Box
+5. Catched Network Image
 
 > Readme
 > Screenshots (SS Folder inside root)
