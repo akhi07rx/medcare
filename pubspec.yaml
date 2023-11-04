@@ -40,6 +40,7 @@ dependencies:
   adoptive_calendar: ^0.0.4
   cached_network_image: ^3.3.0
   iconsax_flutter: ^1.0.0
+  flutter_screenutil: ^5.9.0
 
 dev_dependencies:
   flutter_test:

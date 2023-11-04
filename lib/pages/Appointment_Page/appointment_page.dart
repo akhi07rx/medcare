@@ -1,63 +1,17 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:adoptive_calendar/adoptive_calendar.dart';
 
+import 'doctor_category.dart';
 import '../../widgets/custom_card.dart';
 import '../../widgets/custom_dropdown_menu.dart';
+import '../../widgets/date_picker_widget.dart';
 
-final List<String> facilityItems = [
-  'Facility 1',
-  'Facility 2',
-  'Facility 3',
-];
-final List<String> specialtyItems = [
-  'Specialty 1',
-  'Specialty 2',
-  'Specialty 3'
-];
-final List<String> doctorItems = [
-  'Doctor 1',
-  'Doctor 2',
-  'Doctor 3',
-];
-
-String? selectedFacility;
-String? selectedSpecialty;
-String? selectedDoctor;
+Category? selectedSpecialty;
+Doctor? selectedDoctor;
 DateTime selectedDate = DateTime.now();
 
 final _formKey = GlobalKey<FormState>();
-
-class DatePickerWidget extends StatelessWidget {
-  final Function(DateTime) onDateSelected;
-
-  DatePickerWidget({required this.onDateSelected});
-
-  Future<void> _selectDate(BuildContext context) async {
-    final DateTime? picked = await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AdoptiveCalendar(
-          initialDate: DateTime.now(),
-        );
-      },
-    );
-    if (picked != null) {
-      onDateSelected(picked);
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      title: Text("${selectedDate.toLocal()}".split(' ')[0]),
-      trailing: Icon(Icons.calendar_today, color: Colors.grey[700]),
-      onTap: () => _selectDate(context),
-    );
-  }
-}
 
 class AppointmentPage extends StatefulWidget {
   const AppointmentPage({Key? key}) : super(key: key);
@@ -124,25 +78,23 @@ class _AppointmentPageState extends State<AppointmentPage> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    CustomDropdownMenu(
-                      hint: 'Select Your Facility',
-                      items: facilityItems,
-                      onChanged: (value) => selectedFacility = value,
-                    ),
-                    const SizedBox(height: 30),
-                    CustomDropdownMenu(
+                    CustomDropdownMenu<Category>(
                       hint: 'Select Your Specialty',
-                      items: specialtyItems,
+                      items: categories,
                       onChanged: (value) => selectedSpecialty = value,
+                      itemBuilder: (Category category) => category.name,
                     ),
                     const SizedBox(height: 30),
-                    CustomDropdownMenu(
+                    CustomDropdownMenu<Doctor>(
                       hint: 'Select Your Doctor',
-                      items: doctorItems,
+                      items: doctors,
                       onChanged: (value) => selectedDoctor = value,
+                      itemBuilder: (Doctor doctor) => doctor.name,
                     ),
                     const SizedBox(height: 30),
-                    DatePickerWidget(onDateSelected: onDateSelected),
+                    DatePickerWidget(
+                        onDateSelected: onDateSelected,
+                        selectedDate: selectedDate),
                     const SizedBox(height: 30),
                     ElevatedButton(
                       onPressed: () {
