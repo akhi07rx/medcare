@@ -5,10 +5,10 @@ packages:
     dependency: "direct main"
     description:
       name: adoptive_calendar
-      sha256: "16027699c7762f65c07ca357d2025eca07c9bff831a6aee58f1aa94e603e6b20"
+      sha256: cd571dbf5abfc107f61d370d81e266a4eb99b2a8f179628b8977557e2fb2c15b
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.4"
+    version: "0.0.5"
   async:
     dependency: transitive
     description:
