@@ -19,7 +19,7 @@ class CustomDropdownMenu<T> extends StatelessWidget {
       isExpanded: true,
       decoration: InputDecoration(
         contentPadding: const EdgeInsets.symmetric(
-            vertical: 16, horizontal: 10), // Added horizontal padding
+            vertical: 16, horizontal: 10),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
         ),
