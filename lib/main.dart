@@ -8,8 +8,6 @@ void main() {
 }
 
 class MyApp extends StatefulWidget {
-  static final title = 'salomon_bottom_bar';
-
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -18,7 +16,7 @@ class _MyAppState extends State<MyApp> {
   var _currentIndex = 0;
 
   final pages = [
-    MainPage(),
+    // MainPage(),
     AppointmentPage(),
     AppointmentPage(),
     AppointmentPage(),
@@ -27,15 +25,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: MyApp.title,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text(MyApp.title),
-        ),
         body: pages[_currentIndex],
         bottomNavigationBar: SalomonBottomBar(
           currentIndex: _currentIndex,
@@ -43,22 +38,22 @@ class _MyAppState extends State<MyApp> {
           items: [
             SalomonBottomBarItem(
               icon: Icon(Iconsax.home),
-              title: Text("Home"),
+              title: Text(""),
               selectedColor: Colors.purple,
             ),
             SalomonBottomBarItem(
               icon: Icon(Iconsax.save_2),
-              title: Text("Visits"),
+              title: Text(""),
               selectedColor: Colors.pink,
             ),
             SalomonBottomBarItem(
               icon: Icon(Iconsax.activity),
-              title: Text("History"),
+              title: Text(""),
               selectedColor: Colors.orange,
             ),
             SalomonBottomBarItem(
               icon: Icon(Iconsax.user),
-              title: Text("Profile"),
+              title: Text(""),
               selectedColor: Colors.teal,
             ),
           ],
@@ -68,21 +63,21 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+// class MainPage extends StatelessWidget {
+//   const MainPage({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        child: Text('Go to Appointment Page'),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AppointmentPage()),
-          );
-        },
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: ElevatedButton(
+//         child: Text('Go to Appointment Page'),
+//         onPressed: () {
+//           Navigator.push(
+//             context,
+//             MaterialPageRoute(builder: (context) => AppointmentPage()),
+//           );
+//         },
+//       ),
+//     );
+//   }
+// }
