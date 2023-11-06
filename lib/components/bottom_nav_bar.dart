@@ -21,22 +21,22 @@ class _BottomNavBarState extends State<BottomNavBar> {
       items: [
         SalomonBottomBarItem(
           icon: Icon(Iconsax.home),
-          title: Text(""),
+          title: Text("HOME"),
           selectedColor: Colors.purple,
         ),
         SalomonBottomBarItem(
           icon: Icon(Iconsax.save_2),
-          title: Text(""),
+          title: Text("APPOINTMENTS"),
           selectedColor: Colors.pink,
         ),
         SalomonBottomBarItem(
-          icon: Icon(Iconsax.activity),
-          title: Text(""),
+          icon: Icon(Iconsax.note_1),
+          title: Text("REPORTS"),
           selectedColor: Colors.orange,
         ),
         SalomonBottomBarItem(
           icon: Icon(Iconsax.user),
-          title: Text(""),
+          title: Text("PROFILE"),
           selectedColor: Colors.teal,
         ),
       ],

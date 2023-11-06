@@ -43,6 +43,7 @@ dependencies:
   dot_navigation_bar: ^1.0.2
   salomon_bottom_bar: ^3.3.2
   iconsax: ^0.0.8
+  flutter_screenutil: ^5.9.0
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/
     - assets/logo/medcare.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
