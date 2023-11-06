@@ -32,7 +32,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'APPOINTMENTS',
+          'MEDCARE',
           style: GoogleFonts.poppins(
             color: Colors.black,
           ),

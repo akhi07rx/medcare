@@ -19,9 +19,9 @@ class _MyAppState extends State<MyApp> {
 
   final pages = [
     TopCardSection(),
+    AppointmentPage(),
+    AppointmentPage(),
     MainPage(),
-    AppointmentPage(),
-    AppointmentPage(),
   ];
 
   @override
