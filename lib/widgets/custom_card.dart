@@ -33,9 +33,12 @@ class CustomCard extends StatelessWidget {
                     style: GoogleFonts.openSans(
                         fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  Text(
-                    'Connect now and get expert insights',
-                    style: GoogleFonts.openSans(),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4.0),
+                    child: Text(
+                      'Connect now and get expert insights',
+                      style: GoogleFonts.openSans(),
+                    ),
                   ),
                   ElevatedButton(
                     onPressed: () {
