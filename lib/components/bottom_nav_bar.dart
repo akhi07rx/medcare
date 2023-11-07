@@ -20,23 +20,23 @@ class _BottomNavBarState extends State<BottomNavBar> {
       onTap: widget.onTap,
       items: [
         SalomonBottomBarItem(
-          icon: Icon(Iconsax.home),
-          title: Text("HOME"),
+          icon: const Icon(Iconsax.home),
+          title: const Text("HOME"),
           selectedColor: Colors.purple,
         ),
         SalomonBottomBarItem(
-          icon: Icon(Iconsax.save_2),
-          title: Text("APPOINTMENTS"),
+          icon: const Icon(Iconsax.save_2),
+          title: const Text("APPOINTMENTS"),
           selectedColor: Colors.pink,
         ),
         SalomonBottomBarItem(
-          icon: Icon(Iconsax.note_1),
-          title: Text("REPORTS"),
+          icon: const Icon(Iconsax.note_1),
+          title: const Text("REPORTS"),
           selectedColor: Colors.orange,
         ),
         SalomonBottomBarItem(
-          icon: Icon(Iconsax.user),
-          title: Text("PROFILE"),
+          icon: const Icon(Iconsax.user),
+          title: const Text("PROFILE"),
           selectedColor: Colors.teal,
         ),
       ],
