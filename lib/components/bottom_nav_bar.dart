@@ -22,7 +22,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         SalomonBottomBarItem(
           icon: const Icon(Iconsax.home),
           title: const Text("HOME"),
-          selectedColor: Colors.purple,
+          selectedColor: Colors.blue,
         ),
         SalomonBottomBarItem(
           icon: const Icon(Iconsax.save_2),
