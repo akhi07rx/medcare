@@ -38,7 +38,6 @@ dependencies:
   getwidget: ^4.0.0
   dropdown_button2: ^2.3.9
   adoptive_calendar: ^0.0.4
-  cached_network_image: ^3.3.0
 
   dot_navigation_bar: ^1.0.2
   salomon_bottom_bar: ^3.3.2
