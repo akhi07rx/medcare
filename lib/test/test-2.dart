@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:iconsax/iconsax.dart';
-import 'components/bottom_nav_bar.dart';
-import 'pages/Appointment_Page/appointment_page.dart';
+
+import '../components/bottom_nav_bar.dart';
+import '../pages/Appointment_Page/appointment_page.dart';
+// import 'components/bottom_nav_bar.dart';
+// import 'pages/Appointment_Page/appointment_page.dart';
 
 void main() {
   runApp(MyApp());
