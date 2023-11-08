@@ -45,3 +45,4 @@ app.*.map.json
 /android/app/release
 todo.txt
 todo.txt
+/lib/test
