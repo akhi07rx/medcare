@@ -121,7 +121,7 @@ class SearchBox extends StatelessWidget {
       ),
       child: Row(
         children: [
-          const Icon(Iconsax.search_favorite),
+          const Icon(Iconsax.search_normal),
           AppDimensions.hSpace(1),
           const Flexible(
               child: TextField(
