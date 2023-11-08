@@ -39,10 +39,12 @@ dependencies:
   dropdown_button2: ^2.3.9
   adoptive_calendar: ^0.0.4
 
-  dot_navigation_bar: ^1.0.2
   salomon_bottom_bar: ^3.3.2
   iconsax: ^0.0.8
   flutter_screenutil: ^5.9.0
+
+  dot_navigation_bar: ^1.0.2
+  icons_flutter: ^0.0.4
 
 dev_dependencies:
   flutter_test:
