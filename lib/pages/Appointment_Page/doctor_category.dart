@@ -21,21 +21,19 @@ final List<Category> categories = [
 class Doctor {
   final String name;
   final Category category;
-  final int reviewCount;
 
-  Doctor(
-      {required this.name, required this.category, required this.reviewCount});
+  Doctor({required this.name, required this.category});
 }
 
 final List<Doctor> doctors = [
-  Doctor(name: "Dr. John Smith", category: categories[0], reviewCount: 20),
-  Doctor(name: "Dr. Sarah Johnson", category: categories[1], reviewCount: 15),
-  Doctor(name: "Dr. Lisa Williams", category: categories[2], reviewCount: 30),
-  Doctor(name: "Dr. James Brown", category: categories[3], reviewCount: 25),
-  Doctor(name: "Dr. Emily Davis", category: categories[4], reviewCount: 35),
-  Doctor(name: "Dr. Michael Wilson", category: categories[5], reviewCount: 10),
-  Doctor(name: "Dr. Maria Garcia", category: categories[6], reviewCount: 40),
-  Doctor(name: "Dr. Robert Martinez", category: categories[7], reviewCount: 22),
-  Doctor(name: "Dr. William Turner", category: categories[8], reviewCount: 18),
-  Doctor(name: "Dr. Linda Adams", category: categories[9], reviewCount: 28),
+  Doctor(name: "Dr. John Smith", category: categories[0]),
+  Doctor(name: "Dr. Sarah Johnson", category: categories[1]),
+  Doctor(name: "Dr. Lisa Williams", category: categories[2]),
+  Doctor(name: "Dr. James Brown", category: categories[3]),
+  Doctor(name: "Dr. Emily Davis", category: categories[4]),
+  Doctor(name: "Dr. Michael Wilson", category: categories[5]),
+  Doctor(name: "Dr. Maria Garcia", category: categories[6]),
+  Doctor(name: "Dr. Robert Martinez", category: categories[7]),
+  Doctor(name: "Dr. William Turner", category: categories[8]),
+  Doctor(name: "Dr. Linda Adams", category: categories[9]),
 ];
