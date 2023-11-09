@@ -43,6 +43,12 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+<<<<<<< HEAD
 
 /lib/test
 /lib/test/Appointment_Page
+=======
+todo.txt
+todo.txt
+/lib/test
+>>>>>>> bd2a3579d0373faaeac6f1c859c83c93c7d95bef
