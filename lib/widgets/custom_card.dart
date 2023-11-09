@@ -31,8 +31,8 @@ class CustomCard extends StatelessWidget {
                   Text(
                     'Connect with doctors & get suggestions',
                     style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      // fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                   Padding(
@@ -40,7 +40,8 @@ class CustomCard extends StatelessWidget {
                     child: Text(
                       'Connect now and get expert insights',
                       style: GoogleFonts.poppins(
-                        fontSize: 12,
+                        fontSize: 14,
+                        //fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -49,9 +50,9 @@ class CustomCard extends StatelessWidget {
                       // Put your code here
                     },
                     child: Text(
-                      'view details',
+                      'VIEW DETAILS',
                       style: GoogleFonts.poppins(
-                        fontSize: 12,
+                        fontSize: 12.5,
                       ),
                     ),
                     style: ElevatedButton.styleFrom(

@@ -21,6 +21,25 @@ class AppointmentPage extends StatefulWidget {
 }
 
 class _AppointmentPageState extends State<AppointmentPage> {
+  Category? selectedSpecialty;
+  Doctor? selectedDoctor;
+  List<Doctor> filteredDoctors = doctors;
+
+  void onCategoryChanged(Category? category) {
+    setState(() {
+      selectedSpecialty = category;
+      filteredDoctors = doctors
+          .where((doctor) => doctor.category.id == category?.id)
+          .toList();
+    });
+  }
+
+  void onDoctorChanged(Doctor? doctor) {
+    setState(() {
+      selectedDoctor = doctor;
+    });
+  }
+
   void onDateSelected(DateTime date) {
     setState(() {
       selectedDate = date;
@@ -81,14 +100,14 @@ class _AppointmentPageState extends State<AppointmentPage> {
                     CustomDropdownMenu<Category>(
                       hint: 'Select Your Specialty',
                       items: categories,
-                      onChanged: (value) => selectedSpecialty = value,
+                      onChanged: onCategoryChanged,
                       itemBuilder: (Category category) => category.name,
                     ),
                     const SizedBox(height: 30),
                     CustomDropdownMenu<Doctor>(
                       hint: 'Select Your Doctor',
-                      items: doctors,
-                      onChanged: (value) => selectedDoctor = value,
+                      items: filteredDoctors,
+                      onChanged: onDoctorChanged,
                       itemBuilder: (Doctor doctor) => doctor.name,
                     ),
                     const SizedBox(height: 30),
