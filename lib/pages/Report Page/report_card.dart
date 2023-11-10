@@ -57,6 +57,51 @@ class ReportCard extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
+                  const SizedBox(height: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'BLOOD TEST RESULTS',
+                        style: GoogleFonts.poppins(
+                          fontSize: 14,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'Blood, Plasma, and Serum; Acetoacetate follows. 3 mg/L plasma; 3 mg/L acetylcholinesterase (AChE), red blood cells.',
+                        style: GoogleFonts.poppins(
+                          fontSize: 12,
+                          color: Color.fromARGB(255, 0, 0, 0),
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Text(
+                            'EMR',
+                            style: GoogleFonts.poppins(
+                              fontSize: 14,
+                              color: Color.fromARGB(255, 0, 0, 0),
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.download,
+                              size: 24,
+                            ),
+                            onPressed: () {
+                              // Handle download action
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
