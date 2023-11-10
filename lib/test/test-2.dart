@@ -1,349 +1,142 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:iconsax/iconsax.dart';
+// import 'package:flutter/material.dart';
+// import 'package:getwidget/getwidget.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
-import '../components/bottom_nav_bar.dart';
-import '../pages/Appointment_Page/appointment_page.dart';
-// import 'components/bottom_nav_bar.dart';
-// import 'pages/Appointment_Page/appointment_page.dart';
+// import 'doctor_category.dart';
+// import '../../widgets/custom_card.dart';
+// import '../../widgets/custom_dropdown_menu.dart';
+// import '../../widgets/date_picker_widget.dart';
 
-void main() {
-  runApp(MyApp());
-}
+// Category? selectedSpecialty = categories[0];
+// Doctor? selectedDoctor = doctors[0];
+// DateTime selectedDate = DateTime.now();
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyAppState createState() => _MyAppState();
-}
+// final _formKey = GlobalKey<FormState>();
+// class AppointmentPage extends StatefulWidget {
+//  const AppointmentPage({Key? key}) : super(key: key);
 
-class _MyAppState extends State<MyApp> {
-  var _currentIndex = 0;
+//  @override
+//  _AppointmentPageState createState() => _AppointmentPageState();
+// }
 
-  final pages = [
-    TopCardSection(),
-    MainPage(),
-    AppointmentPage(),
-    AppointmentPage(),
-  ];
+// class _AppointmentPageState extends State<AppointmentPage> {
+//  Category? selectedSpecialty = categories[0];
+//  Doctor? selectedDoctor = doctors[0];
+//  List<Doctor> filteredDoctors = doctors;
 
-  @override
-  Widget build(BuildContext context) {
-    ScreenUtil.init(
-      context,
-      designSize: Size(360, 690),
-    );
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: Scaffold(
-        body: pages[_currentIndex],
-        bottomNavigationBar: BottomNavBar(
-          currentIndex: _currentIndex,
-          onTap: (i) => setState(() => _currentIndex = i),
-        ),
-      ),
-    );
-  }
-}
+//  void onCategoryChanged(Category? category) {
+//    setState(() {
+//      selectedSpecialty = category;
+//      filteredDoctors = doctors
+//          .where((doctor) => doctor.category.id == category?.id)
+//          .toList();
+//      selectedDoctor = filteredDoctors.isNotEmpty ? filteredDoctors[0] : null;
+//    });
+//  }
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+//  void onDoctorChanged(Doctor? doctor) {
+//    setState(() {
+//      selectedDoctor = doctor;
+//    });
+//  }
 
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        child: Text('Go to Appointment Page'),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AppointmentPage()),
-          );
-        },
-      ),
-    );
-  }
-}
-
-class AppColors {
-  static Color grayBg = const Color(0xffEAECF0);
-  static Color blue = const Color(0xff0165FC);
-  static Color blueStrong = const Color(0xff1D4ED8);
-  static Color secondaryGray = const Color(0xff545F76);
-}
-
-class AppDimensions {
-  static double baseSize = 8;
-
-  static SizedBox vSpace(int multiplier) =>
-      SizedBox(height: baseSize * multiplier);
-
-  static SizedBox hSpace(int multiplier) =>
-      SizedBox(width: baseSize * multiplier);
-}
-
-class AppTexts {
-  static TextStyle headline = GoogleFonts.poppins(
-    fontWeight: FontWeight.w500,
-    fontSize: 14.sp,
-  );
-  static TextStyle headlineLarge = GoogleFonts.poppins(
-    fontWeight: FontWeight.w500,
-    fontSize: 23.sp,
-  );
-
-  static TextStyle title = GoogleFonts.poppins(
-    fontWeight: FontWeight.w500,
-    fontSize: 13.sp,
-  );
-
-  static TextStyle subtitle = GoogleFonts.poppins(
-    fontSize: 11.sp,
-  );
-  static TextStyle subtitle2 = GoogleFonts.poppins(
-    fontSize: 9.sp,
-  );
-}
-
-class SearchBox extends StatelessWidget {
-  const SearchBox({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: AppDimensions.baseSize * 2),
-      width: double.infinity,
-      height: 55,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(1000),
-        color: Colors.white,
-      ),
-      child: Row(
-        children: [
-          const Icon(Iconsax.search_favorite),
-          AppDimensions.hSpace(1),
-          const Flexible(
-              child: TextField(
-            decoration: InputDecoration(
-              hintStyle: TextStyle(color: Colors.grey),
-              hintText: 'Search here',
-              border: InputBorder.none,
-            ),
-          ))
-        ],
-      ),
-    );
-  }
-}
-
-class UpcomingScheduleCard extends StatelessWidget {
-  const UpcomingScheduleCard({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.all(AppDimensions.baseSize * 2),
-      decoration: BoxDecoration(
-        color: AppColors.blue,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  const CircleAvatar(
-                    radius: 17,
-                    backgroundImage: AssetImage("assets/Jennifer.png"),
-                  ),
-                  AppDimensions.hSpace(1),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Dr Jennifer Fernando",
-                        style: AppTexts.title.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      Text(
-                        "Psychologist",
-                        style: AppTexts.subtitle.copyWith(color: Colors.white),
-                      ),
-                    ],
-                  )
-                ],
-              ),
-              const CircleAvatar(
-                radius: 17,
-                foregroundColor: Colors.black,
-                backgroundColor: Colors.white,
-                child: Icon(
-                  Iconsax.call,
-                  size: 15,
-                ),
-              )
-            ],
-          ),
-          AppDimensions.vSpace(2),
-          Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(AppDimensions.baseSize * 2),
-            decoration: BoxDecoration(
-              color: AppColors.blueStrong,
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(
-                      Iconsax.calendar,
-                      color: Colors.white,
-                      size: 15.w,
-                    ),
-                    AppDimensions.hSpace(1),
-                    Text(
-                      "23 October 2023",
-                      style: AppTexts.subtitle.copyWith(color: Colors.white),
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Icon(
-                      Iconsax.clock,
-                      color: Colors.white,
-                      size: 15.w,
-                    ),
-                    AppDimensions.hSpace(1),
-                    Text(
-                      "12.35 - 13.45",
-                      style: AppTexts.subtitle.copyWith(color: Colors.white),
-                    ),
-                  ],
-                )
-              ],
-            ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class TopCardSection extends StatelessWidget {
-  const TopCardSection({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(AppDimensions.baseSize * 2.5),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: AppColors.grayBg,
-        borderRadius: BorderRadius.circular(40),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppDimensions.vSpace(3),
-          appbar(),
-          AppDimensions.vSpace(3),
-          Text(
-            "How are you feeling\ntoday?",
-            style: AppTexts.headlineLarge
-                .copyWith(fontSize: 25, fontWeight: FontWeight.w500),
-          ),
-          AppDimensions.vSpace(3),
-          const SearchBox(),
-          AppDimensions.vSpace(3),
-          Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'Upcoming Schedule',
-                        style: AppTexts.title
-                            .copyWith(fontWeight: FontWeight.w500),
-                      ),
-                      AppDimensions.hSpace(1),
-                      const CircleAvatar(
-                        radius: 9,
-                        backgroundColor: Colors.redAccent,
-                        child: Text(
-                          '2',
-                          style: TextStyle(color: Colors.white, fontSize: 9),
-                        ),
-                      )
-                    ],
-                  ),
-                  Text(
-                    'View all',
-                    style: AppTexts.subtitle
-                        .copyWith(color: AppColors.secondaryGray),
-                  ),
-                ],
-              ),
-              AppDimensions.vSpace(2),
-              const UpcomingScheduleCard()
-            ],
-          ),
-          AppDimensions.vSpace(1),
-        ],
-      ),
-    );
-  }
-
-  Row appbar() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Row(
-          children: [
-            const CircleAvatar(
-              radius: 20,
-              backgroundImage: AssetImage("assets/boy.jpg"),
-            ),
-            AppDimensions.hSpace(1),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Good morning",
-                  style: AppTexts.subtitle2
-                      .copyWith(color: AppColors.secondaryGray),
-                ),
-                Text(
-                  "Gwen Stacy",
-                  style: AppTexts.title.copyWith(fontWeight: FontWeight.w500),
-                ),
-              ],
-            )
-          ],
-        ),
-        const CircleAvatar(
-          radius: 20,
-          foregroundColor: Colors.black,
-          backgroundColor: Colors.white,
-          child: Icon(
-            Iconsax.notification,
-            size: 20,
-          ),
-        )
-      ],
-    );
-  }
-}
+//  void onDateSelected(DateTime date) {
+//    setState(() {
+//      selectedDate = date;
+//    });
+//  }
+//  @override
+//  Widget build(BuildContext context) {
+//    return Scaffold(
+//      appBar: AppBar(
+//        title: Text(
+//          'MEDCARE',
+//          style: GoogleFonts.poppins(
+//            color: Colors.black,
+//          ),
+//        ),
+//        centerTitle: true,
+//        leading: const BackButton(color: Colors.black),
+//        actions: [
+//          IconButton(
+//            icon: Image.asset('assets/logo/medcare.png',
+//                width: 36.0, height: 36.0),
+//            onPressed: () {},
+//          ),
+//        ],
+//        backgroundColor: Colors.transparent,
+//        elevation: 0,
+//      ),
+//      body: SingleChildScrollView(
+//        child: Padding(
+//          padding: const EdgeInsets.all(8.0),
+//          child: Column(
+//            children: <Widget>[
+//              Padding(
+//                padding: const EdgeInsets.all(8.0),
+//                child: Row(
+//                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//                 children: <Widget>[
+//                   GFButton(
+//                     onPressed: () {},
+//                     text: "CREATE APPOINTMENTS",
+//                     type: GFButtonType.outline,
+//                   ),
+//                   GFButton(
+//                     onPressed: () {},
+//                     text: "BOOKED APPOINTMENTS",
+//                     type: GFButtonType.outline,
+//                   ),
+//                 ],
+//                ),
+//              ),
+//              CustomCard(),
+//              const SizedBox(height: 30),
+//              Form(
+//                key: _formKey,
+//                child: Column(
+//                 children: [
+//                   CustomDropdownMenu<Category>(
+//                     hint: 'Select Your Specialty',
+//                     items: categories,
+//                     onChanged: onCategoryChanged,
+//                     value: selectedSpecialty,
+//                     itemBuilder: (Category category) => category.name,
+//                   ),
+//                   const SizedBox(height: 30),
+//                   CustomDropdownMenu<Doctor>(
+//                     hint: 'Select Your Doctor',
+//                     items: filteredDoctors,
+//                     onChanged: onDoctorChanged,
+//                     value: selectedDoctor,
+//                    ```
+//                     itemBuilder: (Doctor doctor) => doctor.name,
+//                   ),
+//                   const SizedBox(height: 30),
+//                   DatePickerWidget(
+//                       onDateSelected: onDateSelected,
+//                       selectedDate: selectedDate),
+//                   const SizedBox(height: 30),
+//                   ElevatedButton(
+//                     onPressed: () {
+//                       if (_formKey.currentState!.validate()) {
+//                         _formKey.currentState!.save();
+//                         print('Form is valid');
+//                       } else {
+//                         print('Form is not valid');
+//                       }
+//                     },
+//                     child: Text('CREATE APPOINTMENTS'),
+//                     style: ElevatedButton.styleFrom(
+//                         shape: RoundedRectangleBorder(
+//                             borderRadius: BorderRadius.circular(20))),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

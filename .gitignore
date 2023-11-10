@@ -52,3 +52,6 @@ todo.txt
 todo.txt
 /lib/test
 >>>>>>> bd2a3579d0373faaeac6f1c859c83c93c7d95bef
+/lib/test/test-2.dart
+/lib/test/test.dart
+/lib/test/widget-test.dart
