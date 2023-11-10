@@ -43,6 +43,7 @@ dependencies:
   iconsax: ^0.0.8
   flutter_screenutil: ^5.9.0
 
+  #NBDF0031C3
   dot_navigation_bar: ^1.0.2
   icons_flutter: ^0.0.4
 

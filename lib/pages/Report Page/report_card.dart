@@ -34,16 +34,17 @@ class ReportCard extends StatelessWidget {
                       ),
                       Row(
                         children: <Widget>[
+                          Text(
+                            '10 MIN',
+                            style: GoogleFonts.roboto(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 12,
+                            ),
+                          ),
+                          const SizedBox(width: 4),
                           Icon(
                             Iconsax.clock,
                             size: 18,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            '10 MIN',
-                            style: GoogleFonts.poppins(
-                              fontSize: 12,
-                            ),
                           ),
                         ],
                       ),
@@ -64,8 +65,8 @@ class ReportCard extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         'BLOOD TEST RESULTS',
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
+                        style: GoogleFonts.roboto(
+                          fontSize: 18,
                           color: Color.fromARGB(255, 0, 0, 0),
                           fontWeight: FontWeight.w600,
                         ),
@@ -73,7 +74,7 @@ class ReportCard extends StatelessWidget {
                       const SizedBox(height: 4),
                       Text(
                         'Blood, Plasma, and Serum; Acetoacetate follows. 3 mg/L plasma; 3 mg/L acetylcholinesterase (AChE), red blood cells.',
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.jetBrainsMono(
                           fontSize: 12,
                           color: Color.fromARGB(255, 0, 0, 0),
                         ),
@@ -84,7 +85,7 @@ class ReportCard extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             'EMR',
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.roboto(
                               fontSize: 14,
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontWeight: FontWeight.w600,

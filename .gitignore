@@ -55,4 +55,9 @@ todo.txt
 /lib/test/test-2.dart
 /lib/test/test.dart
 /lib/test/widget-test.dart
+
+
+#TEMP MODE
 /assets/lottie-json
+/assets/documents
+/todo-work.txt
