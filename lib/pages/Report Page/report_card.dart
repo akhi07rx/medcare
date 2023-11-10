@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart' show GoogleFonts;
+import 'package:google_fonts/google_fonts.dart';
+import 'package:iconsax/iconsax.dart';
 
 class ReportCard extends StatelessWidget {
   @override
@@ -26,7 +27,7 @@ class ReportCard extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         'NYPD21C2307',
-                        style: GoogleFonts.robotoMono(
+                        style: GoogleFonts.jetBrainsMono(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                         ),
@@ -34,7 +35,7 @@ class ReportCard extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           Icon(
-                            Icons.access_time,
+                            Iconsax.clock,
                             size: 18,
                           ),
                           const SizedBox(width: 4),
@@ -91,7 +92,7 @@ class ReportCard extends StatelessWidget {
                           ),
                           IconButton(
                             icon: Icon(
-                              Icons.download,
+                              Iconsax.document_download,
                               size: 24,
                             ),
                             onPressed: () {
