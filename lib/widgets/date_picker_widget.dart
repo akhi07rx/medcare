@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:adoptive_calendar/adoptive_calendar.dart';
 
 class DatePickerWidget extends StatelessWidget {
@@ -27,7 +28,7 @@ class DatePickerWidget extends StatelessWidget {
       title: Text(selectedDate != null
           ? "${selectedDate!.toLocal()}".split(' ')[0]
           : "SELECT A DATE"),
-      trailing: Icon(Icons.calendar_today, color: Colors.grey[700]),
+      trailing: Icon(Iconsax.calendar_add, color: Colors.grey[700]),
       onTap: () => _selectDate(context),
     );
   }
