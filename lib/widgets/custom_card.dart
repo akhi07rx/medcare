@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CustomCard extends StatelessWidget {
   @override
@@ -15,11 +16,13 @@ class CustomCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: <Widget>[
-            Image.network(
-              'https://i.imgur.com/HXuxNoI.png',
+            CachedNetworkImage(
+              imageUrl: 'https://i.imgur.com/HXuxNoI.png',
               width: 116,
               height: 140,
               fit: BoxFit.cover,
+              placeholder: (context, url) => CircularProgressIndicator(),
+              errorWidget: (context, url, error) => Icon(Icons.error),
             ),
             const SizedBox(
               width: 10,
@@ -46,9 +49,7 @@ class CustomCard extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      // Put your code here
-                    },
+                    onPressed: () {},
                     child: Text(
                       'VIEW DETAILS',
                       style: GoogleFonts.poppins(
