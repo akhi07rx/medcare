@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'doctor_category.dart';
 import '../../widgets/custom_card.dart';
@@ -44,6 +45,18 @@ class _AppointmentPageState extends State<AppointmentPage> {
     setState(() {
       selectedDate = date;
     });
+  }
+
+  void showToast(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
   }
 
   @override
@@ -119,6 +132,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
+                          showToast('Appointment created!');
                           print('Form is valid');
                         } else {
                           print('Form is not valid');
