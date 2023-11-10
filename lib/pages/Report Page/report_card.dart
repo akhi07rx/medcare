@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:google_fonts/google_fonts.dart' show GoogleFonts;
 
 class ReportCard extends StatelessWidget {
   @override
@@ -26,8 +26,8 @@ class ReportCard extends StatelessWidget {
                     children: <Widget>[
                       Text(
                         'NYPD21C2307',
-                        style: GoogleFonts.poppins(
-                          fontSize: 16,
+                        style: GoogleFonts.robotoMono(
+                          fontSize: 20,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
@@ -39,7 +39,7 @@ class ReportCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            '10 minutes',
+                            '10 MIN',
                             style: GoogleFonts.poppins(
                               fontSize: 12,
                             ),
