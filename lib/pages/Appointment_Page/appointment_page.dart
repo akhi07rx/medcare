@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'booked_appointments_page.dart';
 import 'doctor_category.dart';
+
 import '../../widgets/custom_card.dart';
 import '../../widgets/custom_dropdown_menu.dart';
 import '../../widgets/date_picker_widget.dart';
@@ -84,7 +86,14 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       type: GFButtonType.outline,
                     ),
                     GFButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const BookedAppointmentsPage()),
+                        );
+                      },
                       text: "BOOKED APPOINTMENTS",
                       type: GFButtonType.outline,
                     ),
