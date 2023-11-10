@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:medcare/pages/Report%20Page/report_card.dart';
+import 'report_card.dart';
 
 class ReportPage extends StatelessWidget {
   const ReportPage({Key? key}) : super(key: key);

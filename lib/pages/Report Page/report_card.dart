@@ -4,68 +4,64 @@ import 'package:google_fonts/google_fonts.dart';
 class ReportCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: const Color(0xFFE4E7EC),
-      shape: RoundedRectangleBorder(
-        side: const BorderSide(color: Colors.grey, width: 0.3),
-        borderRadius: BorderRadius.circular(10),
-      ),
-      elevation: 5,
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: <Widget>[
-            Image.network(
-              'https://i.imgur.com/HXuxNoI.png',
-              width: 116,
-              height: 140,
-              fit: BoxFit.cover,
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: ListView(
+        shrinkWrap: true,
+        children: [
+          Card(
+            color: const Color(0xFFE4E7EC),
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(color: Colors.grey, width: 0.3),
+              borderRadius: BorderRadius.circular(10),
             ),
-            const SizedBox(
-              width: 10,
-            ),
-            Expanded(
+            elevation: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Text(
-                    'Connect with doctors & get suggestions',
-                    style: GoogleFonts.poppins(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text(
+                        'NYPD21C2307',
+                        style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Icon(
+                            Icons.access_time,
+                            size: 18,
+                          ),
+                          const SizedBox(width: 4),
+                          Text(
+                            '10 minutes',
+                            style: GoogleFonts.poppins(
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 10),
+                  Center(
+                    child: Image.network(
+                      'https://i.imgur.com/HXuxNoI.png',
+                      width: 116,
+                      height: 140,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4.0),
-                    child: Text(
-                      'Connect now and get expert insights',
-                      style: GoogleFonts.poppins(
-                        fontSize: 14,
-                        //fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Put your code here
-                    },
-                    child: Text(
-                      'VIEW DETAILS',
-                      style: GoogleFonts.poppins(
-                        fontSize: 12.5,
-                      ),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                  )
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
