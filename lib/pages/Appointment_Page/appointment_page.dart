@@ -202,6 +202,12 @@ class _AppointmentPageState extends State<AppointmentPage> {
                         );
                       }).toList(),
                       onChanged: onDoctorChanged,
+                      validator: (value) {
+                        if (value == null) {
+                          return 'Please select a doctor';
+                        }
+                        return null;
+                      },
                       style: TextStyle(color: Colors.black),
                       decoration: InputDecoration(
                         contentPadding:
