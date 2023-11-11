@@ -17,7 +17,6 @@ class Category {
 class Doctor {
   final String name;
   final Category category;
-
   Doctor({required this.name, required this.category});
 }
 
@@ -47,10 +46,11 @@ List<Category> categories = [
 
 List<Doctor> doctors = [
   Doctor(name: 'John Smith', category: categories[0]),
-  Doctor(name: 'Sarah Johnson', category: categories[1]),
-  Doctor(name: 'Lisa Williams', category: categories[2]),
+  Doctor(name: 'Chris Evans', category: categories[1]),
+  Doctor(name: 'Ryan Reynolds', category: categories[2]),
   Doctor(name: 'James Brown', category: categories[3]),
   Doctor(name: 'Emily Davis', category: categories[4]),
+  Doctor(name: 'Sam Smith', category: categories[4]),
   Doctor(name: 'Michael Wilson', category: categories[5]),
   Doctor(name: 'Maria Garcia', category: categories[6]),
   Doctor(name: 'Robert Martinez', category: categories[7]),
