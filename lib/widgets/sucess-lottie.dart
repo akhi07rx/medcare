@@ -13,7 +13,7 @@ class _SuccessLottieState extends State<SuccessLottie> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer(const Duration(milliseconds: 2000), () {
+    _timer = Timer(const Duration(milliseconds: 1890), () {
       Navigator.of(context).pop();
     });
   }
