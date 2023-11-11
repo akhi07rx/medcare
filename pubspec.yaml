@@ -81,6 +81,7 @@ flutter:
     - assets/logo/medcare.png
     - assets/animations/
     - assets/animations/lottie/
+    - assets/animations/lottie/Success.json
     - assets/animations/lottie-med/
     - assets/animations/lottie-med/Liver.json
 

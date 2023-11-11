@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 
+import 'package:medcare/widgets/sucess-lottie.dart';
 import '../../widgets/custom_card.dart';
 import '../../widgets/date_picker_widget.dart';
 
@@ -105,26 +105,9 @@ class _AppointmentPageState extends State<AppointmentPage> {
       context: context,
       barrierColor: Colors.transparent,
       builder: (BuildContext builderContext) {
-        _timer = Timer(const Duration(milliseconds: 2000), () {
-          Navigator.of(context).pop();
-        });
-
-        return Center(
-          child: Container(
-            color: Colors.transparent,
-            width: 250,
-            child: Lottie.asset(
-              'assets/animations/lottie-med/Liver.json',
-              fit: BoxFit.contain,
-            ),
-          ),
-        );
+        return SuccessLottie();
       },
-    ).then((val) {
-      if (_timer != null && _timer!.isActive) {
-        _timer!.cancel();
-      }
-    });
+    );
   }
 
   @override
