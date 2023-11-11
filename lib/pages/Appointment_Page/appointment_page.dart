@@ -176,6 +176,17 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       }).toList(),
                       onChanged: onSpecialtyChanged,
                       style: TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue.shade600),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 30),
                     DropdownButtonFormField<Doctor>(
@@ -192,6 +203,17 @@ class _AppointmentPageState extends State<AppointmentPage> {
                       }).toList(),
                       onChanged: onDoctorChanged,
                       style: TextStyle(color: Colors.black),
+                      decoration: InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue.shade600),
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 30),
                     DatePickerWidget(
