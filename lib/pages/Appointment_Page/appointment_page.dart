@@ -55,6 +55,7 @@ List<Doctor> doctors = [
   Doctor(name: 'Maria Garcia', category: categories[6]),
   Doctor(name: 'Robert Martinez', category: categories[7]),
   Doctor(name: 'William Turner', category: categories[8]),
+  Doctor(name: 'Thomas Turner', category: categories[8]),
 ];
 
 DateTime selectedDate = DateTime.now();
