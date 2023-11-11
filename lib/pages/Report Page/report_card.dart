@@ -77,6 +77,7 @@ class ReportCard extends StatelessWidget {
                         style: GoogleFonts.jetBrainsMono(
                           fontSize: 12,
                           color: Color.fromARGB(255, 0, 0, 0),
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -85,8 +86,8 @@ class ReportCard extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             'EMR',
-                            style: GoogleFonts.roboto(
-                              fontSize: 14,
+                            style: GoogleFonts.openSans(
+                              fontSize: 16,
                               color: Color.fromARGB(255, 0, 0, 0),
                               fontWeight: FontWeight.w600,
                             ),
