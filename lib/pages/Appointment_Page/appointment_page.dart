@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -71,11 +72,11 @@ class AppointmentPage extends StatefulWidget {
 
 class _AppointmentPageState extends State<AppointmentPage> {
   bool isFormValid = false;
-
   DateTime selectedDate = DateTime.now();
   Category? selectedSpecialty;
   Doctor? selectedDoctor;
   List<Doctor> filteredDoctors = [];
+  Timer? _timer;
 
   void onDateSelected(DateTime date) {
     setState(() {
@@ -96,6 +97,33 @@ class _AppointmentPageState extends State<AppointmentPage> {
   void onDoctorChanged(Doctor? doctor) {
     setState(() {
       selectedDoctor = doctor;
+    });
+  }
+
+  void showConfirmationDialog() {
+    showDialog(
+      context: context,
+      barrierColor: Colors.transparent,
+      builder: (BuildContext builderContext) {
+        _timer = Timer(const Duration(milliseconds: 2000), () {
+          Navigator.of(context).pop();
+        });
+
+        return Center(
+          child: Container(
+            color: Colors.transparent,
+            width: 250,
+            child: Lottie.asset(
+              'assets/animations/lottie-med/Liver.json',
+              fit: BoxFit.contain,
+            ),
+          ),
+        );
+      },
+    ).then((val) {
+      if (_timer != null && _timer!.isActive) {
+        _timer!.cancel();
+      }
     });
   }
 
@@ -195,6 +223,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
                             isFormValid = true;
                           });
                           print('Form is valid');
+                          showConfirmationDialog();
                         } else {
                           setState(() {
                             isFormValid = false;
@@ -209,13 +238,6 @@ class _AppointmentPageState extends State<AppointmentPage> {
                         ),
                       ),
                     ),
-                    if (isFormValid)
-                      Lottie.asset(
-                        'assets/animations/lottie-med/Liver.json',
-                        width: 100,
-                        height: 100,
-                        fit: BoxFit.cover,
-                      ),
                   ],
                 ),
               ),
