@@ -24,23 +24,39 @@ class BookedAppointmentPage extends StatelessWidget {
                     leading: CircleAvatar(
                       backgroundImage: NetworkImage(appointment.doctorAvatar),
                     ),
-                    title: Text(appointment.doctorName),
-                    subtitle: Text(appointment.doctorSpecialty),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            showRescheduleDialog(context, appointment);
-                          },
-                          child: Text('Reschedule'),
+                        Text(
+                          'Dr. ${appointment.doctorName}',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        SizedBox(width: 8.0),
-                        ElevatedButton(
-                          onPressed: () {
-                            showCancelDialog(context, appointment);
-                          },
-                          child: Text('Cancel'),
+                        SizedBox(height: 4.0),
+                        Text(
+                          appointment.doctorSpecialty,
+                          style: TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                        SizedBox(height: 8.0),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                showRescheduleDialog(context, appointment);
+                              },
+                              child: Text('Reschedule'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                showCancelDialog(context, appointment);
+                              },
+                              child: Text('Cancel'),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -55,18 +71,17 @@ class BookedAppointmentPage extends StatelessWidget {
   }
 
   Future<List<AppointmentData>> fetchBookedAppointments() async {
-    // Simulate fetching data from a remote server or database.
     await Future.delayed(Duration(seconds: 2));
     return [
       AppointmentData(
-        doctorName: 'Dr. John Doe',
+        doctorName: 'John Doe',
         doctorSpecialty: 'Cardiologist',
-        doctorAvatar: 'https://example.com/avatar1.jpg',
+        doctorAvatar: 'https://i.imgur.com/ja6PGNp.jpg',
       ),
       AppointmentData(
-        doctorName: 'Dr. Jane Smith',
+        doctorName: 'Jane Smith',
         doctorSpecialty: 'Dermatologist',
-        doctorAvatar: 'https://example.com/avatar2.jpg',
+        doctorAvatar: 'https://i.imgur.com/AdMBElO.jpg',
       ),
     ];
   }
@@ -78,19 +93,17 @@ class BookedAppointmentPage extends StatelessWidget {
         return AlertDialog(
           title: Text('Reschedule Appointment'),
           content: Text(
-              'Do you want to reschedule your appointment with ${appointment.doctorName}?'),
+              'Do you want to reschedule your appointment with Dr. ${appointment.doctorName}?'),
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context);
               },
               child: Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
-                // Add logic for rescheduling the appointment.
-                // You can navigate to a reschedule page or show a success message.
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
                       content: Text('Appointment rescheduled successfully')),
@@ -111,19 +124,17 @@ class BookedAppointmentPage extends StatelessWidget {
         return AlertDialog(
           title: Text('Cancel Appointment'),
           content: Text(
-              'Do you want to cancel your appointment with ${appointment.doctorName}?'),
+              'Do you want to cancel your appointment with Dr. ${appointment.doctorName}?'),
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context);
               },
               child: Text('No'),
             ),
             TextButton(
               onPressed: () {
-                // Add logic for canceling the appointment.
-                // You can show a success message or navigate back to the appointments page.
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context);
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Appointment canceled successfully')),
                 );
