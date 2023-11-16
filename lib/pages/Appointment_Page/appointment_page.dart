@@ -1,4 +1,4 @@
-import 'dart:async';
+// import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -77,7 +77,7 @@ class _AppointmentPageState extends State<AppointmentPage> {
   Category? selectedSpecialty;
   Doctor? selectedDoctor;
   List<Doctor> filteredDoctors = [];
-  Timer? _timer;
+  // Timer? _timer;
 
   void onDateSelected(DateTime date) {
     setState(() {
