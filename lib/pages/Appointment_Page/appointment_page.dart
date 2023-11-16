@@ -1,4 +1,3 @@
-// import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -77,7 +76,6 @@ class _AppointmentPageState extends State<AppointmentPage> {
   Category? selectedSpecialty;
   Doctor? selectedDoctor;
   List<Doctor> filteredDoctors = [];
-  // Timer? _timer;
 
   void onDateSelected(DateTime date) {
     setState(() {
@@ -113,148 +111,147 @@ class _AppointmentPageState extends State<AppointmentPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'MEDCARE',
-          style: GoogleFonts.poppins(
-            color: Colors.black,
+    return DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'MEDCARE',
+            style: GoogleFonts.poppins(
+              color: Colors.black,
+            ),
           ),
-        ),
-        centerTitle: true,
-        leading: const BackButton(color: Colors.black),
-        actions: [
-          IconButton(
-            icon: Image.asset('assets/logo/medcare.png',
-                width: 36.0, height: 36.0),
-            onPressed: () {},
-          ),
-        ],
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    GFButton(
-                      onPressed: () {},
-                      text: "CREATE APPOINTMENTS",
-                      type: GFButtonType.outline,
-                    ),
-                    GFButton(
-                      onPressed: () {},
-                      text: "BOOKED APPOINTMENTS",
-                      type: GFButtonType.outline,
-                    ),
-                  ],
-                ),
-              ),
-              CustomCard(),
-              const SizedBox(height: 30),
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    DropdownButtonFormField<Category>(
-                      hint: Text('Select Your Specialty'),
-                      value: selectedSpecialty,
-                      items: categories.map((Category category) {
-                        return DropdownMenuItem<Category>(
-                          value: category,
-                          child: Text(
-                            category.name,
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: onSpecialtyChanged,
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue.shade600),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 30),
-                    DropdownButtonFormField<Doctor>(
-                      hint: Text('Select Your Doctor'),
-                      value: selectedDoctor,
-                      items: filteredDoctors.map((Doctor doctor) {
-                        return DropdownMenuItem<Doctor>(
-                          value: doctor,
-                          child: Text(
-                            doctor.name,
-                            style: TextStyle(color: Colors.black),
-                          ),
-                        );
-                      }).toList(),
-                      onChanged: onDoctorChanged,
-                      validator: (value) {
-                        if (value == null) {
-                          return 'Please select a doctor';
-                        }
-                        return null;
-                      },
-                      style: TextStyle(color: Colors.black),
-                      decoration: InputDecoration(
-                        contentPadding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue.shade600),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 30),
-                    DatePickerWidget(
-                      onDateSelected: onDateSelected,
-                      selectedDate: selectedDate,
-                    ),
-                    const SizedBox(height: 30),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          _formKey.currentState!.save();
-                          setState(() {
-                            isFormValid = true;
-                          });
-                          print('Form is valid');
-                          showConfirmationDialog();
-                        } else {
-                          setState(() {
-                            isFormValid = false;
-                          });
-                          print('Form is not valid');
-                        }
-                      },
-                      child: Text('CREATE APPOINTMENTS'),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+          centerTitle: true,
+          leading: const BackButton(color: Colors.black),
+          actions: [
+            IconButton(
+              icon: Image.asset('assets/logo/medcare.png',
+                  width: 36.0, height: 36.0),
+              onPressed: () {},
+            ),
+          ],
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          bottom: TabBar(
+            tabs: [
+              Tab(text: "CREATE APPOINTMENTS"),
+              Tab(text: "BOOKED APPOINTMENTS"),
             ],
           ),
+        ),
+        body: TabBarView(
+          children: [
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: <Widget>[
+                    CustomCard(),
+                    const SizedBox(height: 30),
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          DropdownButtonFormField<Category>(
+                            hint: Text('Select Your Specialty'),
+                            value: selectedSpecialty,
+                            items: categories.map((Category category) {
+                              return DropdownMenuItem<Category>(
+                                value: category,
+                                child: Text(
+                                  category.name,
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: onSpecialtyChanged,
+                            style: TextStyle(color: Colors.black),
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 15),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.blue.shade600),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          DropdownButtonFormField<Doctor>(
+                            hint: Text('Select Your Doctor'),
+                            value: selectedDoctor,
+                            items: filteredDoctors.map((Doctor doctor) {
+                              return DropdownMenuItem<Doctor>(
+                                value: doctor,
+                                child: Text(
+                                  doctor.name,
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                              );
+                            }).toList(),
+                            onChanged: onDoctorChanged,
+                            validator: (value) {
+                              if (value == null) {
+                                return 'Please select a doctor';
+                              }
+                              return null;
+                            },
+                            style: TextStyle(color: Colors.black),
+                            decoration: InputDecoration(
+                              contentPadding: EdgeInsets.symmetric(
+                                  vertical: 10, horizontal: 15),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.blue.shade600),
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 30),
+                          DatePickerWidget(
+                            onDateSelected: onDateSelected,
+                            selectedDate: selectedDate,
+                          ),
+                          const SizedBox(height: 30),
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                _formKey.currentState!.save();
+                                setState(() {
+                                  isFormValid = true;
+                                });
+                                print('Form is valid');
+                                showConfirmationDialog();
+                              } else {
+                                setState(() {
+                                  isFormValid = false;
+                                });
+                                print('Form is not valid');
+                              }
+                            },
+                            child: Text('CREATE APPOINTMENTS'),
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            // Content for the "BOOKED APPOINTMENTS" tab (currently blank)
+            Container(),
+          ],
         ),
       ),
     );
