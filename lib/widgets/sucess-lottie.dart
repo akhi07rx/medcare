@@ -31,7 +31,7 @@ class _SuccessLottieState extends State<SuccessLottie> {
     return Center(
       child: Container(
         color: Colors.transparent,
-        width: 250,
+        width: 180,
         child: Lottie.asset(
           'assets/animations/lottie/Success.json',
           fit: BoxFit.contain,
