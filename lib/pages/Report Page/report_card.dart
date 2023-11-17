@@ -28,7 +28,7 @@ class ReportCard extends StatelessWidget {
                       Text(
                         'NYPD21C2307',
                         style: GoogleFonts.jetBrainsMono(
-                          fontSize: 20,
+                          fontSize: 24,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
