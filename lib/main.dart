@@ -6,6 +6,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:medcare/pages/Report%20Page/report_page.dart';
 import 'components/bottom_nav_bar.dart';
 import 'pages/Appointment_Page/appointment_page.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -297,10 +298,185 @@ class TopCardSection extends StatelessWidget {
                 ],
               ),
               AppDimensions.vSpace(2),
-              const UpcomingScheduleCard()
+              const UpcomingScheduleCard(),
             ],
           ),
           AppDimensions.vSpace(1),
+          StaggeredGrid.count(
+            crossAxisCount: 6,
+            crossAxisSpacing: 20,
+            mainAxisSpacing: 20,
+            children: [
+              StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 2,
+                child: Container(
+                  color: Colors.white,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AppointmentPage(),
+                              ),
+                            );
+                          },
+                          icon: Image.network(
+                            "https://cdn-icons-png.flaticon.com/512/4383/4383617.png",
+                          ),
+                        ),
+                        Text("Prescription")
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 2,
+                child: Container(
+                  color: Colors.white,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AppointmentPage(),
+                              ),
+                            );
+                          },
+                          icon: Image.network(
+                            "https://cdn-icons-png.flaticon.com/512/2830/2830510.png",
+                          ),
+                        ),
+                        Text("Reports")
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 2,
+                child: Container(
+                  color: Colors.white,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AppointmentPage(),
+                              ),
+                            );
+                          },
+                          icon: Image.network(
+                            "https://cdn-icons-png.flaticon.com/512/2764/2764442.png",
+                          ),
+                        ),
+                        Text("Appointments")
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 2,
+                child: Container(
+                  color: Colors.white,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AppointmentPage(),
+                              ),
+                            );
+                          },
+                          icon: Image.network(
+                            "https://cdn-icons-png.flaticon.com/512/4090/4090491.png",
+                          ),
+                        ),
+                        Text("Receipt")
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 2,
+                child: Container(
+                  color: Colors.white,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AppointmentPage(),
+                              ),
+                            );
+                          },
+                          icon: Image.network(
+                            "https://static.thenounproject.com/png/2134394-200.png",
+                          ),
+                        ),
+                        Text("IP Deposit")
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              StaggeredGridTile.count(
+                crossAxisCellCount: 2,
+                mainAxisCellCount: 2,
+                child: Container(
+                  color: Colors.white,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => AppointmentPage(),
+                              ),
+                            );
+                          },
+                          icon: Image.network(
+                            "https://dl3.pushbulletusercontent.com/5qThAPmiPQ7LGu2havj5nk6dFfzH3m5g/call-phone.png",
+                          ),
+                        ),
+                        Text("Contact Us")
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

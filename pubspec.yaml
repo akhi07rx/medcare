@@ -43,6 +43,8 @@ dependencies:
   iconsax: ^0.0.8
   flutter_screenutil: ^5.9.0
 
+  flutter_staggered_grid_view: ^0.7.0
+
   cached_network_image: ^3.3.0
   lottie: ^2.7.0
 
